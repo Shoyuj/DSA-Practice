@@ -1,16 +1,17 @@
 class Solution {
     public TreeNode invertTree(TreeNode root) {
-        if (root == null) {
-            return null;
+        // Base case: if the tree is empty...
+        if(root == null){
+            return root;
         }
-        
-        TreeNode temp = root.left;
-        root.left = root.right;
-        root.right = temp;
-        
+        // Call the function recursively for the left subtree...
         invertTree(root.left);
+        // Call the function recursively for the right subtree...
         invertTree(root.right);
-        
-        return root;        
+        // Swapping process...
+        TreeNode curr = root.left;
+        root.left = root.right;
+        root.right = curr;
+        return root;        // Return the root...
     }
 }
